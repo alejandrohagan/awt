@@ -26,8 +26,8 @@ jobs:
 
       - name: Install R packages
         run: |
-          install.packages("remotes")
-          remotes::install_github("alejandrohagan/awt")  # Replace with actual repo if needed
+          Rscript -e 'install.packages("remotes")'
+          Rscript -e 'remotes::install_github("alejandrohagan/awt")'
 
       - name: Run TSA upload script
         run: Rscript scripts/upload_tsa.R
