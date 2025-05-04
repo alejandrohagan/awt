@@ -26,7 +26,7 @@ jobs:
 
       - name: Install R packages
        env:
-        GITHUB_PAT: ${{ secrets.PAT }}
+          GITHUB_PAT: ${{ secrets.PAT }}
         run: |
           Rscript -e 'install.packages("remotes")'
           Rscript -e 'remotes::install_github("alejandrohagan/awt")'
