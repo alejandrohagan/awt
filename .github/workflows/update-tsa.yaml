@@ -25,6 +25,8 @@ jobs:
           sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev
 
       - name: Install R packages
+       env:
+        GITHUB_PAT: ${{ secrets.PAT }}
         run: |
           Rscript -e 'install.packages("remotes")'
           Rscript -e 'remotes::install_github("alejandrohagan/awt")'
