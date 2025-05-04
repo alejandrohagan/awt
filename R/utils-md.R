@@ -15,7 +15,7 @@ connect_to_motherduck <- function(motherduck_token="MOTHERDUCK_TOKEN"){
 
     # if(!DBI::dbIsValid(con)){
 
-        con <- DBI::dbConnect(duckdb::duckdb(),":mem:",list(motherduck_token=motherduck_token))
+        con <- DBI::dbConnect(duckdb::duckdb(),tempfile(),list(motherduck_token=motherduck_token))
 
     # }
 

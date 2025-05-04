@@ -1,0 +1,33 @@
+name: Upload TSA Data to MotherDuck
+
+on:
+  schedule:
+    - cron: '0 6 * * *'  # Every day at 6 AM UTC
+  workflow_dispatch:      # Allow manual triggering
+
+jobs:
+  upload-tsa:
+    runs-on: ubuntu-latest
+
+    env:
+      MOTHERDUCK_TOKEN: ${{ secrets.MOTHERDUCK_TOKEN }}
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup R
+        uses: r-lib/actions/setup-r@v2
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev
+
+      - name: Install R packages
+        run: |
+          install.packages("remotes")
+          remotes::install_github("your-username/awt")  # Replace with actual repo if needed
+
+      - name: Run TSA upload script
+        run: Rscript R/upload_tsa_data.R

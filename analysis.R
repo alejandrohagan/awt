@@ -5,15 +5,16 @@ devtools::load_all()
 library(tidyverse)
 
 
+query <- DBI::Id("tsa","main","tsa_passenger_volumes")
 
+tbl(con,query)
+
+tibble(x=c(query))
+usethis::use_github_action("update-tsa")
+usethis::use_r("upload-tsa.R")
+usethis::use_data_raw("database")
 
 tsa_tbl <- awt::download_tsa_daily_volumes()
-
-con <-awt::connect_to_motherduck()
-
-awt::upload_tibble_to_motherduck(tsa_tbl,con,"tsa","main","tsa_passenger_volumes")
-
-
 # check packages
 
 passenger_checkin_tbl <- read_csv("lax_2023.csv") |>
@@ -60,13 +61,10 @@ tsa_tbl |>
       ,total_passengers=sum(numbers)
       ,annualized_amount=(cumsum/doy)*max_doy
         ,.by=year
-    ) |>
-    # mutate(
-    #   rolling_avg=timetk::slidify_vec(numbers,.f=\(x) mean(x),.period = 60,.align = "right")
-    # ) |>
-
-devtools::document()
-library(tidyverse)
+    ) |> summarise(
+      .by=year
+      ,last=last(annualized_amount)
+    )
     ggplot(
         aes(x=doy,y=annualized_amount,col=factor(year))
     )+
