@@ -77,7 +77,8 @@ upload_tibble_to_motherduck <- function(.data,.con,database_name,schema_name,tab
         .con,
         "SELECT extension_name, loaded, installed FROM duckdb_extensions() WHERE
   extension_name = 'motherduck'"
-    ) |> tibble::as_tibble() |> dplyr::pull(loaded)
+    ) |> tibble::as_tibble()
+    |> dplyr::pull(loaded)
 
     # connect to motherduck
 
