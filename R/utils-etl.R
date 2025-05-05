@@ -20,7 +20,7 @@ airport_tbl <- rvest::read_html(airports) |>
     dplyr::mutate(
         state=dplyr::if_else(faa=="",city,NA)
     ) |>
-    # tidyr::fill(
+    tidyr::fill(
         state,.direction = "down"
     ) |>
     dplyr::filter(
