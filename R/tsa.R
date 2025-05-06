@@ -7,8 +7,6 @@
 #' @returns a tibble
 #' @export
 #'
-#' @examples
-#' create_tsa_volumes_dataset()
 download_tsa_daily_volumes <- function(){
 
   # define variables and create website paths

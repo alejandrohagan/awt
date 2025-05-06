@@ -13,6 +13,3 @@ a tibble
 Pulls the daily TSA passenger check-in volumes from tsa.gov website
 from 2020 to the current date
 }
-\examples{
-create_tsa_volumes_dataset()
-}

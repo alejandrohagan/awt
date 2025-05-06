@@ -15,6 +15,3 @@ connection
 \description{
 Create connection to motherduck
 }
-\examples{
-connect_to_motherduck("MOTHERDUCK_TOKEN")
-}

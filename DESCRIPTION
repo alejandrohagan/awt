@@ -11,9 +11,18 @@ Authors@R: c(
   )
 Description: Downloads key passenger, container and other related data
     and imports to a motherduck instance 
-License: What license is it under?
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
+Imports:
+    dplyr,
+    tidyr,
+    readr,
+    httr,
+    lubridate,
+    janitor,
+    rvest,
+    jsonlite
 RoxygenNote: 7.3.2
 Depends: 
     R (>= 2.10)

@@ -6,8 +6,6 @@
 #' @returns connection
 #' @export
 #'
-#' @examples
-#' connect_to_motherduck("MOTHERDUCK_TOKEN")
 connect_to_motherduck <- function(motherduck_token="MOTHERDUCK_TOKEN"){
 
     motherduck_token <- Sys.getenv(motherduck_token)
@@ -29,7 +27,9 @@ connect_to_motherduck <- function(motherduck_token="MOTHERDUCK_TOKEN"){
         con,
         "SELECT extension_name, loaded, installed FROM duckdb_extensions() WHERE
   extension_name = 'motherduck'"
-    ) |> tibble::as_tibble() |> dplyr::pull(loaded)
+    ) |>
+      tibble::as_tibble() |>
+      dplyr::pull(dplyr::any_of("loaded"))
 
     # connect to motherduck
 
