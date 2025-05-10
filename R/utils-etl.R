@@ -1,3 +1,9 @@
+utils::globalVariables(c(
+    "numbers", "year", "faa", "city", "state",
+    "airport", "airport_clean", "loaded", "con"
+))
+
+
 #' @title Download wiki aiports
 #' @name download_wiki_airports
 #' @description
@@ -7,8 +13,6 @@
 #' @returns tibble
 #' @export
 #'
-#' @examples
-#' download_wiki_airports()
 download_wiki_airports <- function(){
 
 airports <- "https://en.wikipedia.org/wiki/List_of_airports_in_the_United_States"

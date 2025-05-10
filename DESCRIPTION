@@ -1,28 +1,27 @@
 Package: awt
-Type: Package
-Title: airport waiting times
-Version: 0.1.0
-Authors@R: c(
-    person(
-      "Alejandro", "Hagan",
-      email = "alejandro.hagan@outlook.com",
-      role = c("aut", "cre")
-    )
-  )
-Description: Downloads key passenger, container and other related data
-    and imports to a motherduck instance 
+Title: What the Package Does (One Line, Title Case)
+Version: 0.0.0.9000
+Authors@R: 
+    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: What the package does (one paragraph).
 License: MIT + file LICENSE
 Encoding: UTF-8
-LazyData: true
-Imports:
-    dplyr,
-    tidyr,
-    readr,
-    httr,
-    lubridate,
-    janitor,
-    rvest,
-    jsonlite
+Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
+Imports:
+    assertthat,
+    DBI,
+    dplyr,
+    duckdb,
+    janitor,
+    lubridate,
+    purrr,
+    readr,
+    rvest,
+    stringr,
+    tibble,
+    tidyr
 Depends: 
     R (>= 2.10)
+LazyData: true

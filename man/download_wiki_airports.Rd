@@ -14,6 +14,3 @@ Downloads the list of airports in the USA from the wikipedia page from
 'https://en.wikipedia.org/wiki/List_of_airports_in_the_United_States'
 This is used in further transformation and cleaning steps
 }
-\examples{
-download_wiki_airports()
-}
