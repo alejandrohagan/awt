@@ -25,11 +25,13 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev
 
-      - name: Check out repository
-        uses: actions/checkout@v3
-
       - name: Install R packages
         run:  Rscript -e 'install.packages("remotes")'
 
+      - name: Install awt package
+        run: Rscript -e 'remotes::install_github("alejandrohagan/awt", upgrade = "never")'
+
+
       - name: Import data
-        run:  Rscript -e 'source("scripts/upload_tsa.R")'
+        run:  Rscript scripts/upload_tsa.R
+
