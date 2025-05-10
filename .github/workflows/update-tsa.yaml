@@ -29,7 +29,7 @@ jobs:
         run:  Rscript -e 'install.packages("remotes")'
 
       - name: Install awt package
-        run: Rscript -e 'remotes::install_github("alejandrohagan/awt", upgrade = "never")'
+        run:  Rscript -e 'remotes::install_github("alejandrohagan/awt", upgrade = "never")'
 
       - name: Import data
         run:  Rscript scripts/upload_tsa.R
