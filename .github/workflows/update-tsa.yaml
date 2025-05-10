@@ -11,6 +11,7 @@ jobs:
 
     env:
       MOTHERDUCK_TOKEN: ${{ secrets.MOTHERDUCK_TOKEN }}
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
       - name: Checkout repo
@@ -24,10 +25,11 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev
 
-      - name: Install R packages
-        run: |
-          Rscript -e 'install.packages("remotes")'
-          Rscript -e 'remotes::install_github("alejandrohagan/awt")'
+      - name: Check out repository
+        uses: actions/checkout@v3
 
-      - name: Run TSA upload script
-        run: Rscript scripts/upload_tsa.R
+      - name: Install R packages
+        run:  Rscript -e 'install.packages("remotes")'
+
+      - name: Import data
+        run:  Rscript -e 'source("scripts/upload_tsa.R")'
