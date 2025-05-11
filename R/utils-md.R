@@ -17,6 +17,8 @@ connect_to_motherduck <- function(motherduck_token="MOTHERDUCK_TOKEN"){
 
     # }
 
+    DBI::dbExecute(con, "INSTALL 'motherduck';")
+
     DBI::dbExecute(con, "LOAD 'motherduck';")
 
 
