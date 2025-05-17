@@ -77,16 +77,24 @@ upload_tibble_to_motherduck <- function(.data,.con,database_name,schema_name,tab
 
     load_success_indicator <- DBI::dbGetQuery(
         .con,
-        "SELECT extension_name, loaded, installed FROM duckdb_extensions() WHERE
-  extension_name = 'motherduck'"
+        "SELECT
+         extension_name
+        ,loaded
+        ,installed
+        FROM duckdb_extensions()
+        WHERE
+        extension_name = 'motherduck'"
     ) |>
       tibble::as_tibble()|>
       dplyr::pull(loaded)
+
 
     # connect to motherduck
 
     assertthat::assert_that(load_success_indicator,msg = "Motherduck extension did not correctly")
 
+
+    message("successfully loaded motherduck connection")
 
     # DBI::dbExecute(con, "PRAGMA MD_CONNECT")
 
@@ -94,11 +102,15 @@ upload_tibble_to_motherduck <- function(.data,.con,database_name,schema_name,tab
     create_db_query <- paste0("CREATE DATABASE IF NOT EXISTS ",database_name)
     use_db_query <- paste0("USE ",database_name,"; ")
 
+
+    message("successfully created database")
     # schema_name <- "main"
 
     create_schema_query <- paste0(use_db_query," CREATE SCHEMA IF NOT EXISTS ",schema_name,";")
     use_schema_query <- paste0("USE ",schema_name,";")
 
+
+    message("successfully created schema")
 
     create_table_query <- paste0(use_db_query,use_schema_query)
 
@@ -107,6 +119,8 @@ upload_tibble_to_motherduck <- function(.data,.con,database_name,schema_name,tab
     DBI::dbExecute(con,create_db_query)
     DBI::dbExecute(con,create_schema_query)
     DBI::dbExecute(con,create_table_query)
+
+    message("succesfully created all queries")
 
     #add upload date
 
@@ -125,11 +139,17 @@ upload_tibble_to_motherduck <- function(.data,.con,database_name,schema_name,tab
     if(write_type_vec=="overwrite"){
 
         DBI::dbWriteTable(.con,table_name,out,overwrite=TRUE)
+
+    message("succesfully upload query")
+
     }
 
     if(write_type_vec=="append"){
 
         DBI::dbWriteTable(.con,table_name,out,append=TRUE)
+
+    message("succesfully upload query")
+
     }
 
 }

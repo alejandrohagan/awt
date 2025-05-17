@@ -1,7 +1,6 @@
 
 # load tools
-
-usethis::use_mit_license("Alejandro Hagan")
+library(tidyverse)
 
 devtools::document()
 
