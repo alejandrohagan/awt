@@ -21,3 +21,6 @@ Sys.sleep(10)
 message("upload data")
 
 upload_tibble_to_motherduck(tsa_tbl,con,"tsa","main","tsa_passenger_volumes")
+
+
+message("successful upload data")
