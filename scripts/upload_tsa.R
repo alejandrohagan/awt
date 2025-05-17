@@ -24,3 +24,7 @@ upload_tibble_to_motherduck(tsa_tbl,con,"tsa","main","tsa_passenger_volumes")
 
 
 message("successful upload data")
+
+DBI::dbDisconnect(con)
+
+message("successful disconnect")
