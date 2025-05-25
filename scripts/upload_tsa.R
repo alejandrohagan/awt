@@ -18,10 +18,18 @@ con <- connect_to_motherduck(motherduck_token = Sys.getenv("MOTHERDUCK_TOKEN"))
 
 Sys.sleep(10)
 
-message("upload data")
+message("starting upload data")
+
+message(paste0("data has: ",nrow(tsa_tbl)," rows"))
+
+message(paste0("connection is valid?: ",DBI::dbIsValid(con)))
+
+
 
 upload_tibble_to_motherduck(tsa_tbl,con,"tsa","main","tsa_passenger_volumes")
 
+
+Sys.sleep(10)
 
 message("successful upload data")
 

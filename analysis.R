@@ -61,6 +61,12 @@ tsa_tbl |>
       ,annualized_amount=(cumsum/doy)*max_doy
         ,.by=year
     ) |>
+  select(doy,year,annualized_amount) |>
+  pivot_wider(names_from=year,values_from=annualized_amount) |>
+  select(`2024`,`2025`) |>
+  mutate(
+    delta=`2025`-`2024`
+  ) |> view()
 
     ggplot(
         aes(x=doy,y=annualized_amount,col=factor(year))
