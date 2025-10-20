@@ -34,8 +34,10 @@ current_year <- polite::bow(root_link) |>
         ,.by=year
     ) |>
   relocate(year,month,day,dow,dow_label,doy,date,numbers)
-
+message("successful download of data")
 con_md <- md::connect_to_motherduck()
+
+message("successful connection")
 
 current_year |>
 md::create_table(

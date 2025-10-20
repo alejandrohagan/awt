@@ -1,10 +1,9 @@
 
 library(awt)
 library(md)
-library(tidyverse)
-
+library(polite)
 
 message("start script")
 
-tsa_tbl <- download_tsa_daily_volumes()
+tsa_tbl <- download_tsa_daily_volumes_and_upload_to_md()
 
