@@ -31,6 +31,9 @@ jobs:
       - name: Install awt package
         run:  Rscript -e 'remotes::install_github("alejandrohagan/awt", upgrade = "never")'
 
+      - name: Install md package
+        run:  Rscript -e 'remotes::install_github("alejandrohagan/md", upgrade = "never")'
+
       - name: Import data
         run:  Rscript scripts/upload_tsa.R
 

@@ -13,7 +13,6 @@ Imports:
     assertthat,
     DBI,
     dplyr,
-    duckdb,
     janitor,
     lubridate,
     purrr,
