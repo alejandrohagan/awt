@@ -13,7 +13,7 @@ download_tsa_daily_volumes_and_upload_to_md <- function(){
 
 root_link <- "https://www.tsa.gov/travel/passenger-volumes/"
 
-current_year <- polite::bow(root_link) |>
+current_year <- polite::bow(root_link,user_agent = "i mean no harm") |>
         polite::scrape() |>
         rvest::html_nodes("table") |>
         rvest::html_table() |>
