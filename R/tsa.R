@@ -33,7 +33,7 @@ current_year <- polite::bow(root_link) |>
         doy=dplyr::row_number()
         ,.by=year
     ) |>
-  relocate(year,month,day,dow,dow_label,doy,date,numbers)
+  dplyr::relocate(year,month,day,dow,dow_label,doy,date,numbers)
 message("successful download of data")
 con_md <- md::connect_to_motherduck()
 
