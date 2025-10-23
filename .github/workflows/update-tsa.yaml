@@ -29,14 +29,8 @@ jobs:
       - name: Install md package
         run:  Rscript -e 'remotes::install_github("alejandrohagan/md", upgrade = "never")'
 
-      - name: Install tidyverse package
-        run:  Rscript -e 'install.packages("tidyverse")'
-
-      - name: Install polite package
-        run:  Rscript -e 'install.packages("polite")'
-
-      - name: Install rlang package
-        run:  Rscript -e 'install.packages("rlang")'
+      - name: Install R packages
+        run:  Rscript -e 'install.packages(c("remotes", "devtools", "tidyverse", "polite", "rlang"))'
 
       - name: Import data
         run:  Rscript scripts/upload_tsa.R
