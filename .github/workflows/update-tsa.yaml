@@ -7,7 +7,7 @@ on:
 
 jobs:
   upload-tsa:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     env:
       MOTHERDUCK_TOKEN: ${{ secrets.MOTHERDUCK_TOKEN }}
