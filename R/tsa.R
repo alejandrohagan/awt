@@ -12,7 +12,7 @@ download_tsa_daily_volumes_and_upload_to_md <- function(){
   # define variables and create website paths
 
 x <- "https://www.tsa.gov/travel/passenger-volumes/"
-current_year <- 
+current_year <-
     rvest::read_html(x) %>%
     rvest::html_nodes("table") |>
     rvest::html_table() %>%
@@ -34,7 +34,10 @@ current_year <-
         ,.by=year
     ) |>
   dplyr::relocate(year,month,day,dow,dow_label,doy,date,numbers)
+
+
 message("successful download of data")
+
 con_md <- md::connect_to_motherduck()
 
 message("successful connection")
