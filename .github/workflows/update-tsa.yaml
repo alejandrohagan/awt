@@ -30,9 +30,6 @@ jobs:
       - name: Install awt package
         run:  Rscript -e 'remotes::install_github("alejandrohagan/awt", upgrade = "never")'
 
-      - name: Install md package
-        run:  Rscript -e 'remotes::install_github("alejandrohagan/md", upgrade = "never")'
-
       - name: Install R packages
         run:  Rscript -e 'install.packages(c("remotes", "devtools", "tidyverse", "polite", "rlang"))'
 
